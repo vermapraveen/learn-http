@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpServer", "tcpServer\tcpServer.csproj", "{60C42881-1354-43EB-A62C-88920D383770}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpClient", "tcpClient\tcpClient.csproj", "{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comon.tcp", "comon.tcp\comon.tcp.csproj", "{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60C42881-1354-43EB-A62C-88920D383770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C42881-1354-43EB-A62C-88920D383770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C42881-1354-43EB-A62C-88920D383770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C42881-1354-43EB-A62C-88920D383770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF9D68C4-8E2E-4F67-B93C-225F41289CD8}
+	EndGlobalSection
+EndGlobal
