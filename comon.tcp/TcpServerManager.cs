@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -14,8 +15,6 @@ namespace comon.tcp
             Socket socket = tcpListener.AcceptSocket();
 
             ReceiveClientData(socket);
-
-            SendAck(socket);
 
             socket.Close();
 
@@ -38,15 +37,40 @@ namespace comon.tcp
             int lengthOfClientData = socket.Receive(clientData);
             Console.WriteLine("Recieved...");
 
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < lengthOfClientData; i++)
-                Console.Write(Convert.ToChar(clientData[i]));
-        }
+                sb.Append(Convert.ToChar(clientData[i]));
 
-        private static void SendAck(Socket socket)
-        {
+            var clientDataText = sb.ToString();
+            string[] inputStrings = clientDataText.Split(new char[] { ' ' });
+            string documentToReturn = "";
+
+            if (inputStrings[0] == "GET")
+            {
+                if (inputStrings.Length > 1)
+                    documentToReturn = inputStrings[1];
+            }
+
             ASCIIEncoding encoding = new ASCIIEncoding();
-            socket.Send(encoding.GetBytes("This is acknowledgement from server... Thanks"));
-            Console.WriteLine("Acknowledgement from server.");
+
+            if (!string.IsNullOrEmpty(documentToReturn))
+            {
+                if (File.Exists(documentToReturn))
+                {
+                    socket.Send(encoding.GetBytes("Found!<From Server>"));
+                }
+                else
+                {
+                    socket.Send(encoding.GetBytes("Not Found!<From Server>"));
+                }
+            }
+            else
+            {
+                socket.Send(encoding.GetBytes("Invalid Request!<From Server>"));
+            }
+
+            Console.WriteLine("Acknowledgement sent.");
+
         }
     }
 }
