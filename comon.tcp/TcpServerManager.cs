@@ -9,27 +9,44 @@ namespace comon.tcp
     {
         public static TcpListener GetTcpListener(string myIpAddress, int portToListen)
         {
+            TcpListener tcpListener = StartTcpListener(myIpAddress, portToListen);
+
+            Socket socket = tcpListener.AcceptSocket();
+
+            ReceiveClientData(socket);
+
+            SendAck(socket);
+
+            socket.Close();
+
+            return tcpListener;
+        }
+
+        private static TcpListener StartTcpListener(string myIpAddress, int portToListen)
+        {
             TcpListener tcpListener = new TcpListener(IPAddress.Parse(myIpAddress), portToListen);
             Console.WriteLine("Starting listener...");
             tcpListener.Start();
+            return tcpListener;
+        }
 
-            Socket s = tcpListener.AcceptSocket();
-            Console.WriteLine("Connection accepted from " + s.RemoteEndPoint);
+        private static void ReceiveClientData(Socket socket)
+        {
+            Console.WriteLine("Connection accepted from " + socket.RemoteEndPoint);
 
-            byte[] b = new byte[100];
-            int k = s.Receive(b);
+            byte[] clientData = new byte[100];
+            int lengthOfClientData = socket.Receive(clientData);
             Console.WriteLine("Recieved...");
 
-            for (int i = 0; i < k; i++)
-                Console.Write(Convert.ToChar(b[i]));
+            for (int i = 0; i < lengthOfClientData; i++)
+                Console.Write(Convert.ToChar(clientData[i]));
+        }
 
-            ASCIIEncoding asen = new ASCIIEncoding();
-            s.Send(asen.GetBytes("This is acknowledgement from server... Thanks"));
+        private static void SendAck(Socket socket)
+        {
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            socket.Send(encoding.GetBytes("This is acknowledgement from server... Thanks"));
             Console.WriteLine("Acknowledgement from server.");
-            /* clean up */
-            s.Close();
-
-            return tcpListener;
         }
     }
 }

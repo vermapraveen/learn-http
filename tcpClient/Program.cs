@@ -12,7 +12,7 @@ namespace tcpClient
         {
             try
             {
-                var tcpclnt = TcpClientManager.GetTcpClient(myIp, portToListen, null);
+                var tcpclnt = TcpClientManager.StartTcpClient(myIp, portToListen);
 
                 tcpclnt.Close();
             }

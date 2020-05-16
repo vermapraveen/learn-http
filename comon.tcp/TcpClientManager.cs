@@ -7,33 +7,58 @@ namespace comon.tcp
 {
     public class TcpClientManager
     {
-        public static TcpClient GetTcpClient(string serverIpAddress, int serverPort, Stream dataTosend)
+        public static TcpClient StartTcpClient(string serverIpAddress, int serverPort)
         {
-            TcpClient tcpclnt = new TcpClient();
+            TcpClient tcpclient = CreateTcpConnection(serverIpAddress, serverPort);
+
+            byte[] inputBytesFromEncoding = GenerateClientInput();
+
+            Stream clientServerStreamRef = SendToServer(tcpclient, inputBytesFromEncoding);
+
+            ReadServerAck(clientServerStreamRef);
+
+            return tcpclient;
+        }
+
+        private static TcpClient CreateTcpConnection(string serverIpAddress, int serverPort)
+        {
+            TcpClient tcpclient = new TcpClient();
             Console.WriteLine("Connecting.....");
 
-            tcpclnt.Connect(serverIpAddress, serverPort);
+            tcpclient.Connect(serverIpAddress, serverPort);
             // use the ipaddress as in the server program
 
             Console.WriteLine("Connected");
-            Console.Write("Enter the string to be transmitted : ");
+            return tcpclient;
+        }
 
-            String str = Console.ReadLine();
-            Stream stm = tcpclnt.GetStream();
-
-            ASCIIEncoding asen = new ASCIIEncoding();
-            byte[] ba = asen.GetBytes(str);
+        private static Stream SendToServer(TcpClient tcpclient, byte[] inputBytesFromEncoding)
+        {
+            Stream clientStreamRef = tcpclient.GetStream();
             Console.WriteLine("Transmitting.....");
 
-            stm.Write(ba, 0, ba.Length);
+            clientStreamRef.Write(inputBytesFromEncoding, 0, inputBytesFromEncoding.Length);
 
-            byte[] bb = new byte[100];
-            int k = stm.Read(bb, 0, 100);
+            return clientStreamRef;
+        }
+
+        private static void ReadServerAck(Stream clientStreamRef)
+        {
+            byte[] ackBytesFromServer = new byte[100];
+            int k = clientStreamRef.Read(ackBytesFromServer, 0, 100);
 
             for (int i = 0; i < k; i++)
-                Console.Write(Convert.ToChar(bb[i]));
+                Console.Write(Convert.ToChar(ackBytesFromServer[i]));
+        }
 
-            return tcpclnt;
+        private static byte[] GenerateClientInput()
+        {
+            Console.Write("Enter the string to be transmitted : ");
+
+            String inputString = Console.ReadLine();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] inputBytesFromEncoding = encoding.GetBytes(inputString);
+            return inputBytesFromEncoding;
         }
     }
 }

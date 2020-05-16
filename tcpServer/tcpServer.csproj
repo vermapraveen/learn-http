@@ -9,4 +9,10 @@
     <ProjectReference Include="..\comon.tcp\comon.tcp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="documentsOnServer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
