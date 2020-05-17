@@ -6,13 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\comon.tcp\comon.tcp.csproj" />
+    <None Remove="deployed\docOnServer.html" />
+    <None Remove="deployed\imgOnServer.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="documentsOnServer.png">
+    <Content Include="deployed\docOnServer.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="deployed\imgOnServer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\comon.tcp\comon.tcp.csproj" />
   </ItemGroup>
 
 </Project>

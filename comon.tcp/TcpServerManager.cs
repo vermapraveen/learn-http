@@ -53,11 +53,13 @@ namespace comon.tcp
 
             ASCIIEncoding encoding = new ASCIIEncoding();
 
+            string deploymentFolder = "deployed";
+            string filePath = Path.Combine(deploymentFolder, documentToReturn);
             if (!string.IsNullOrEmpty(documentToReturn))
             {
-                if (File.Exists(documentToReturn))
+                if (File.Exists(filePath))
                 {
-                    socket.Send(encoding.GetBytes("Found!<From Server>"));
+                    socket.Send(encoding.GetBytes(File.ReadAllText(filePath)));
                 }
                 else
                 {
