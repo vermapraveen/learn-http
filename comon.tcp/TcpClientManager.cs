@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -13,11 +12,17 @@ namespace comon.tcp
 
             byte[] inputBytesFromEncoding = GenerateClientInput();
 
-            Stream clientServerStreamRef = SendToServer(tcpclient, inputBytesFromEncoding);
+            SendRequestToServer(tcpclient.GetStream(), inputBytesFromEncoding);
 
-            ReadServerAck(clientServerStreamRef);
+            ReadResponseFromServer(tcpclient.GetStream());
 
             return tcpclient;
+        }
+
+        private static void ReadResponseFromServer(NetworkStream clientServerStreamRef)
+        {
+            var response = Common.GetDataFromNetworkStream(clientServerStreamRef);
+            Console.WriteLine(response);
         }
 
         private static TcpClient CreateTcpConnection(string serverIpAddress, int serverPort)
@@ -32,23 +37,11 @@ namespace comon.tcp
             return tcpclient;
         }
 
-        private static Stream SendToServer(TcpClient tcpclient, byte[] inputBytesFromEncoding)
+        private static void SendRequestToServer(NetworkStream clientStreamRef, byte[] inputBytesFromEncoding)
         {
-            Stream clientStreamRef = tcpclient.GetStream();
             Console.WriteLine("Transmitting.....");
 
             clientStreamRef.Write(inputBytesFromEncoding, 0, inputBytesFromEncoding.Length);
-
-            return clientStreamRef;
-        }
-
-        private static void ReadServerAck(Stream clientStreamRef)
-        {
-            byte[] ackBytesFromServer = new byte[100];
-            int k = clientStreamRef.Read(ackBytesFromServer, 0, 100);
-
-            for (int i = 0; i < k; i++)
-                Console.Write(Convert.ToChar(ackBytesFromServer[i]));
         }
 
         private static byte[] GenerateClientInput()
