@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\comon.tcp\comon.tcp.csproj" />
+    <ProjectReference Include="..\common.tcp2\common.tcp2.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace comon.tcp
+namespace comon.tcp2
 {
     public class TcpServerManager
     {

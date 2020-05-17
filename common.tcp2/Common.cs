@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace comon.tcp
+namespace comon.tcp2
 {
     public static class Common
     {

@@ -2,19 +2,17 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace comon.tcp
+namespace comon.tcp2
 {
     public class TcpClientManager
     {
-        public static TcpClient StartTcpClient(string serverIpAddress, int serverPort)
+        public static TcpClient Start(string serverIpAddress, int serverPort, string request)
         {
             TcpClient tcpclient = CreateTcpConnection(serverIpAddress, serverPort);
 
-            byte[] inputBytesFromEncoding = GenerateClientInput();
+            byte[] inputBytesFromEncoding = GenerateClientInput(request);
 
             SendRequestToServer(tcpclient.GetStream(), inputBytesFromEncoding);
-
-            ReadResponseFromServer(tcpclient.GetStream());
 
             return tcpclient;
         }
@@ -28,29 +26,19 @@ namespace comon.tcp
         private static TcpClient CreateTcpConnection(string serverIpAddress, int serverPort)
         {
             TcpClient tcpclient = new TcpClient();
-            Console.WriteLine("Connecting.....");
-
             tcpclient.Connect(serverIpAddress, serverPort);
-            // use the ipaddress as in the server program
-
-            Console.WriteLine("Connected");
             return tcpclient;
         }
 
         private static void SendRequestToServer(NetworkStream clientStreamRef, byte[] inputBytesFromEncoding)
         {
-            Console.WriteLine("Transmitting.....");
-
             clientStreamRef.Write(inputBytesFromEncoding, 0, inputBytesFromEncoding.Length);
         }
 
-        private static byte[] GenerateClientInput()
+        private static byte[] GenerateClientInput(string request)
         {
-            Console.Write("Enter the string to be transmitted : ");
-
-            String inputString = Console.ReadLine();
             ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] inputBytesFromEncoding = encoding.GetBytes(inputString);
+            byte[] inputBytesFromEncoding = encoding.GetBytes(request);
             return inputBytesFromEncoding;
         }
     }

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpServer", "tcpServer\tcpServer.csproj", "{60C42881-1354-43EB-A62C-88920D383770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tcpServer", "tcpServer\tcpServer.csproj", "{60C42881-1354-43EB-A62C-88920D383770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpClient", "tcpClient\tcpClient.csproj", "{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tcpClient", "tcpClient\tcpClient.csproj", "{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comon.tcp", "comon.tcp\comon.tcp.csproj", "{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "first.webBrowser", "first.webBrowser\first.webBrowser.csproj", "{0610BBCA-30A6-4018-88EE-1380734D7A84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common.tcp2", "common.tcp2\common.tcp2.csproj", "{0E62C6B8-A82F-4CE0-BB9E-48470CF3EFC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,14 @@ Global
 		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15863CDD-ED2D-4D4C-A8CF-6695371C7A09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3C18C23-876F-4E3B-95FD-ECE47A121AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0610BBCA-30A6-4018-88EE-1380734D7A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0610BBCA-30A6-4018-88EE-1380734D7A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0610BBCA-30A6-4018-88EE-1380734D7A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0610BBCA-30A6-4018-88EE-1380734D7A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E62C6B8-A82F-4CE0-BB9E-48470CF3EFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E62C6B8-A82F-4CE0-BB9E-48470CF3EFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E62C6B8-A82F-4CE0-BB9E-48470CF3EFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E62C6B8-A82F-4CE0-BB9E-48470CF3EFC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿using comon.tcp;
+﻿using comon.tcp2;
 using System;
 
 namespace tcpServer
